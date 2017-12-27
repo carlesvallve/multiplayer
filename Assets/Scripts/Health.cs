@@ -40,6 +40,7 @@ public class Health : NetworkBehaviour {
 
   void OnChangeHealth (int health) {
     healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
+    healthBar.anchoredPosition = new Vector2(100 - health, 0);
   }
 
   // If the Server simply sets the Player GameObject’s position back to origin
