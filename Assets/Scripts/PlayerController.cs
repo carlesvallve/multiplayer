@@ -9,7 +9,7 @@ public class PlayerController : NetworkBehaviour {
   public Transform bulletSpawn;
 
   public override void OnStartLocalPlayer() {
-    transform.Find("Body").GetComponent<MeshRenderer>().material.color = Color.blue;
+    transform.Find("Body").GetComponent<MeshRenderer>().material.color = Color.cyan;
   }
 
   void Update() {
