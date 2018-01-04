@@ -537,6 +537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4007738249804852}
   - component: {fileID: 95609116994982582}
+  - component: {fileID: 136901284740208698}
   m_Layer: 0
   m_Name: ToonSoldier_demo
   m_TagString: Untagged
@@ -1398,6 +1399,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136901284740208698
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1868549921628816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.6
+  m_Height: 2.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!137 &137750904131361182
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

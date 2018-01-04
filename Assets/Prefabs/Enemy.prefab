@@ -343,6 +343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4852162355737196}
   - component: {fileID: 95217550216765870}
+  - component: {fileID: 136021776938664408}
   m_Layer: 0
   m_Name: ToonSoldier_demo
   m_TagString: Untagged
@@ -1340,6 +1341,19 @@ MonoBehaviour:
     i15: 70
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!136 &136021776938664408
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519887673124670}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.6
+  m_Height: 2.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!136 &136220195423096600
 CapsuleCollider:
   m_ObjectHideFlags: 1
