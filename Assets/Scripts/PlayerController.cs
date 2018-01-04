@@ -1,15 +1,29 @@
 // https://unity3d.com/learn/tutorials/topics/multiplayer-networking/introduction-simple-multiplayer-example?playlist=29690
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+
+public enum PlayerState {
+  Idle = 0,
+  Run = 1,
+  Shoot = 2,
+  Burst = 3
+}
 
 public class PlayerController : NetworkBehaviour {
 
   public GameObject bulletPrefab;
   public Transform bulletSpawn;
 
+  private Anim anim;
+
+  public PlayerState state = PlayerState.Idle;
+
+
   public override void OnStartLocalPlayer() {
     transform.Find("Body").GetComponent<MeshRenderer>().material.color = Color.cyan;
+    anim = GetComponent<Anim>();
   }
 
   void Update() {
@@ -17,15 +31,35 @@ public class PlayerController : NetworkBehaviour {
       return;
     }
 
-    var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
     var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
+    var x = Input.GetAxis("Horizontal") * Time.deltaTime * (360f * (1-Mathf.Abs(z))); //150.0f;
 
     transform.Rotate(0, x, 0);
+
+    if (state == PlayerState.Shoot) {
+      return;
+    }
+
     transform.Translate(0, 0, z);
 
-    if (Input.GetKeyDown(KeyCode.Space)) {
-      CmdFire();
+    if (Mathf.Abs(z) > 0.01f) {
+      state = PlayerState.Run;
+    } else {
+      state = PlayerState.Idle;
     }
+
+    if (Input.GetKeyDown(KeyCode.Space)) {
+      StartCoroutine(Fire());
+    }
+
+    anim.UpdateAnimations(state);
+  }
+
+  private IEnumerator Fire() {
+    CmdFire();
+    state = PlayerState.Shoot;
+    yield return new WaitForSeconds(0.5f);
+    state = PlayerState.Idle;
   }
 
   // This [Command] code is called on the Client …
