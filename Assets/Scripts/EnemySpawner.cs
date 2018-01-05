@@ -3,6 +3,7 @@ using UnityEngine.Networking;
 
 public class EnemySpawner : NetworkBehaviour {
 
+  public Transform parentContainer;
   public GameObject enemyPrefab;
   public int numberOfEnemies;
 
@@ -14,13 +15,14 @@ public class EnemySpawner : NetworkBehaviour {
         Random.Range(-8.0f, 8.0f)
       );
 
-      var spawnRotation = Quaternion.Euler( 
+      var spawnRotation = Quaternion.Euler(
         0.0f,
         Random.Range(0,180),
         0.0f
       );
 
       var enemy = (GameObject)Instantiate(enemyPrefab, spawnPosition, spawnRotation);
+      enemy.transform.SetParent(parentContainer);
       NetworkServer.Spawn(enemy);
     }
   }
