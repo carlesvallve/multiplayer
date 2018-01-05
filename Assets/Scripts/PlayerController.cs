@@ -16,14 +16,20 @@ public class PlayerController : NetworkBehaviour {
   public GameObject bulletPrefab;
   public Transform bulletSpawn;
 
+  public GameObject mesh;
   private Anim anim;
 
   public PlayerState state = PlayerState.Idle;
 
 
   public override void OnStartLocalPlayer() {
-    transform.Find("Body").GetComponent<MeshRenderer>().material.color = Color.cyan;
+    //Material mat = transform.Find("ToonSoldier_demo/").GetComponent<MeshRenderer>().material
+    mesh.GetComponent<SkinnedMeshRenderer>().material.color = Color.red;
     anim = GetComponent<Anim>();
+
+    if (isLocalPlayer) {
+      Camera.main.GetComponent<ThirdPersonCamera>().target = transform;
+    }
   }
 
   void Update() {
@@ -36,9 +42,9 @@ public class PlayerController : NetworkBehaviour {
 
     transform.Rotate(0, x, 0);
 
-    if (state == PlayerState.Shoot) {
-      return;
-    }
+    // if (state == PlayerState.Shoot) {
+    //   return;
+    // }
 
     transform.Translate(0, 0, z);
 
