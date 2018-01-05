@@ -17,12 +17,10 @@ public class VirtualJoystickButton : MonoBehaviour, IPointerUpHandler, IPointerD
 
 
   public void OnPointerDown(PointerEventData ped) {
-    Debug.Log(buttonType + " " + joystickManager);
     pressed = true;
     // tell the joystick manager to set the direction event
     joystickManager.SetButtonDown(buttonType, true);
     joystickManager.SetButtonUp(buttonType, false);
-    //Debug.Log("ButtonDown")
   }
 
 

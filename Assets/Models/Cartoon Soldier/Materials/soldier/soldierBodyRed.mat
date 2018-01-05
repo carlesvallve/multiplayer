@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: soldierBody
+  m_Name: soldierBodyRed
   m_Shader: {fileID: 23, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -33,7 +33,7 @@ Material:
     m_Floats:
     - _Shininess: 0.20208955
     m_Colors:
-    - _Color: {r: 0.5671642, g: 0.5206059, b: 0.5206059, a: 1}
+    - _Color: {r: 0.60294116, g: 0.044333916, b: 0.044333916, a: 1}
     - _ReflectColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     - _SpecColor: {r: 0.7070313, g: 0.7089552, b: 0.640176, a: 1}
 --- !u!1002 &2100001

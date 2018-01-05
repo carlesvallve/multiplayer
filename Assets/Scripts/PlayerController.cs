@@ -7,8 +7,10 @@ using UnityEngine.Networking;
 public enum PlayerState {
   Idle = 0,
   Run = 1,
-  Shoot = 2,
-  Burst = 3
+  Aim = 2,
+  Shoot = 3,
+  Hit = 4,
+  Die = 5,
 }
 
 public class PlayerController : NetworkBehaviour {
@@ -52,7 +54,9 @@ public class PlayerController : NetworkBehaviour {
       transform.Translate(0, 0, 1f * Time.deltaTime * speed);
       state = PlayerState.Run;
     } else {
-      state = PlayerState.Idle;
+      if (state == PlayerState.Run) {
+        state = PlayerState.Idle;
+      }
     }
 
     // var z = input.y * Time.deltaTime * 3.0f;
@@ -89,9 +93,10 @@ public class PlayerController : NetworkBehaviour {
 	}
 
   private IEnumerator Fire() {
-    CmdFire();
     state = PlayerState.Shoot;
-    yield return new WaitForSeconds(0.5f);
+    yield return new WaitForSeconds(0.3f);
+    CmdFire();
+    yield return new WaitForSeconds(0.3f);
     state = PlayerState.Idle;
   }
 
